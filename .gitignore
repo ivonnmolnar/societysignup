@@ -1,0 +1,7 @@
+/db.sqlite3
+/google_contacts.csv
+/membershipform/__pycache__
+/societysignup/__pycache__
+/membershipform/migrations
+/societysignup/.env
+/.coverage
