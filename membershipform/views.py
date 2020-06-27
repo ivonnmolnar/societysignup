@@ -12,10 +12,10 @@ def index(request):
             membership_form.save()
             write_gogle(request.POST['firstname'], request.POST['lastname'], request.POST['email'])
             print(Members.objects.all())
-            context_dict['message'] = "Everything went okie dokie"
+            context_dict['message'] = "Everything went okie dokie."
 
         else:
-            context_dict['message'] = "Yikes, sth went wrong"
+            context_dict['message'] = "Yikes, something went wrong."
 
         return render(request, 'membershipform/index.html', context=context_dict)
 
