@@ -4,12 +4,23 @@
 <html lang="en">
 
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href={% static "css/bootstrap.css" %} />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+  <link rel="icon" href={% static "favicon.ico" %} type="image/x-icon">
   <style>
-    p    {color: white; font-family: 'Noto Sans', sans-serif; font-size: 20px; text-transform: uppercase;}
-    .btn-outline-light:hover {color: pink;}
-</style>
+    p {
+      color: white;
+      font-family: 'Noto Sans', sans-serif;
+      font-size: 20px;
+      text-transform: uppercase;
+    }
+
+    .btn-outline-light:hover {
+      color: pink;
+    }
+  </style>
+
   <title>GUSWITCH Membership form</title>
 </head>
 
@@ -18,22 +29,22 @@
 <body>
   <div class="jumbotron-fluid d-flex align-items-center vh-100" style="background-image: url({% static "bg.jpg" %});">
     <div class="container align-self-center">
-    <div class="row justify-content-center">
-      <div class="col-8">
-      {% if membershipform %}
-        <div class="form-group p-md-4 text-center">
-          <form method="POST">
-            {% csrf_token %}
-            {{ membershipform.as_p}}
-            <div class="p-md-3"><button class="btn btn-outline-light" style="width: 20%;" type="submit">SUBMIT</button></div>
+      <div class="row justify-content-center">
+        <div class="col-8">
+          {% if membershipform %}
+          <div class="form-group p-md-4 text-center">
+            <form method="POST">
+              {% csrf_token %}
+              {{ membershipform.as_p}}
+              <div class="p-md-3"><button class="btn btn-outline-light" style="width: fit-content;" type="submit">SUBMIT</button></div>
+          </div>
+          {% else %}
+          <p>{{message}}</p>
+          <a href="{% url 'index' %}">
+            <button class="btn btn-outline-light">Back to the form</button>
+          </a>
+          {% endif %}
         </div>
-      {% else %}
-      <p>{{message}}</p>
-      <a href="{% url 'index' %}">
-   <button class="btn btn-outline-light">Back to the form</button>
-</a>
-      {% endif %}
-      </div>
       </div>
     </div>
   </div>
