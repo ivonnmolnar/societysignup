@@ -5,3 +5,4 @@
 /membershipform/migrations
 /societysignup/.env
 /.coverage
+/.csv

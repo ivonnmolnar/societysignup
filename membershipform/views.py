@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Members, Courses
 from .forms import MembershipForm, Courses
-from .helper import write_gogle
+from .helper import write_gogle, write_info
 
 from django.http import HttpResponse
 def index(request):
@@ -11,7 +11,7 @@ def index(request):
         if membership_form.is_valid():
             membership_form.save()
             write_gogle(request.POST['firstname'], request.POST['lastname'], request.POST['email'])
-            print(Members.objects.all())
+            write_info(request.POST['firstname'], request.POST['lastname'], request.POST['email'], request.POST['studentID'], Courses.objects.get(pk=int(request.POST['subject'])).coursename, request.POST['year'])
             context_dict['message'] = "Everything went okie dokie."
 
         else:
